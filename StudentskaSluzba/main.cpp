@@ -7,6 +7,9 @@
 //
 
 #include <iostream>
+#include "Student.h"
+
+using namespace std;
 
 int selection;
 
@@ -30,7 +33,6 @@ int main() {
 	do {
 		// get input from user
 		std::cin >> selection;
-
 		// check input is number 1 - 10
 		if (selection != 0 && selection < 0 || selection > 10 || std::cin.fail()) {
 			std::cout << "Unesen je krivi broj pokusajte ponovo\n";
@@ -46,6 +48,7 @@ int main() {
 				break;
 			case 1:
 				std::cout << "Odabran unos studenta\n";
+				Student();
 				break;
 			case 2:
 				std::cout << "Odabran unos kolegija\n";
@@ -54,7 +57,7 @@ int main() {
 				std::cout << "Odabran upis studenta na kolegij\n";
 				break;
 			case 4:
-				std::cout << "Odabran ispis studenta\n";
+				std::cout << "Odabran ispis studenata\n";
 				break;
 			case 5:
 				std::cout << "Odabran ispis kolegija\n";
