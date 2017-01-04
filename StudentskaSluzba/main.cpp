@@ -31,14 +31,54 @@ int main() {
 		// get input from user
 		std::cin >> selection;
 
-		switch (selection) {
-		case 1:
-			std::cout << "Odabran unos studenta\n";
-			break;
+		// check input is number 1 - 10
+		if (selection != 0 && selection < 0 || selection > 10 || std::cin.fail()) {
+			std::cout << "Unesen je krivi broj pokusajte ponovo\n";
+			std::cin.clear();
+			std::cin.ignore();
+			selection = true;
+		}
+		else {
+			// run selected action
+			switch (selection) {
+			case 0:
+				std::cout << "IZLAZ\n";
+				break;
+			case 1:
+				std::cout << "Odabran unos studenta\n";
+				break;
+			case 2:
+				std::cout << "Odabran unos kolegija\n";
+				break;
+			case 3:
+				std::cout << "Odabran upis studenta na kolegij\n";
+				break;
+			case 4:
+				std::cout << "Odabran ispis studenta\n";
+				break;
+			case 5:
+				std::cout << "Odabran ispis kolegija\n";
+				break;
+			case 6:
+				std::cout << "Odabran ispis upisanih studenata\n";
+				break;
+			case 7:
+				std::cout << "Odabran unos ocjene\n";
+				break;
+			case 8:
+				std::cout << "Odabrana izmjena studenta\n";
+				break;
+			case 9:
+				std::cout << "Odabrana izmjena kolegija\n";
+				break;
+			case 10:
+				std::cout << "Odabrana pomoc\n";
+				break;
 
-		default:
-			std::cout << "default\n";
-			break;
+			default:
+				std::cout << "default\n";
+				break;
+			}
 		}
 	} while (selection != 0);
 
