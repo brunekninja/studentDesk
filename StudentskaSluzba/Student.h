@@ -1,13 +1,15 @@
+#include <string>
 #pragma once
 class Student
 {
 public:
-	Student();
-	void Display();
-	void Write(int ID, char First, char Last, int Graduation);
+	std::string First;
+	std::string Last;
 	int Graduation;
-	char First[16];
-	char Last[16];
+	Student();
+	int GetLastID();
+	void Display();
+	void Write(int* ID, std::string* First, std::string* Last, int* Graduation);
 private:
 	int ID;
 };
