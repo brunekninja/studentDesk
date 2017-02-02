@@ -10,12 +10,20 @@
 #include "Actions.h"
 #include "Student.h"
 #include "Course.h"
+#include "LinkCourseStudent.h"
 
 using namespace std;
+
+LinkCourseStudent enroll;
+Course course;
+Student student;
 
 int selection;
 
 int main() {
+
+	student.SetFilename("db/studentsdb.txt");
+	course.SetFilename("db/coursesdb.txt");
 
 	// main console printout
 	std::cout <<
@@ -35,6 +43,8 @@ int main() {
 	do {
 		// get input from user
 		std::cin >> selection;
+		std::cin.clear();
+		std::cin.ignore();
 		// check input is number 1 - 10
 		if (selection != 0 && selection < 0 || selection > 10 || std::cin.fail()) {
 			std::cout << "Unesen je krivi broj pokusajte ponovo\n";
@@ -50,20 +60,23 @@ int main() {
 				break;
 			case 1:
 				std::cout << "Odabran unos studenta\n";
-				Student();
+				student.SetStudent();
 				break;
 			case 2:
 				std::cout << "Odabran unos kolegija\n";
-				Course();
+				course.SetCourse();
 				break;
 			case 3:
 				std::cout << "Odabran upis studenta na kolegij\n";
+				enroll.Display();
 				break;
 			case 4:
 				std::cout << "Odabran ispis studenata\n";
+				student.Display();
 				break;
 			case 5:
 				std::cout << "Odabran ispis kolegija\n";
+				course.Display();
 				break;
 			case 6:
 				std::cout << "Odabran ispis upisanih studenata\n";

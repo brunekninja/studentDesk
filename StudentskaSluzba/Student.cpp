@@ -14,7 +14,10 @@ Student::Student()
 	first;
 	last;
 	graduation = 0;
+}
 
+void Student::SetStudent() 
+{
 	std::cout << "Unesite ime studenta: ";
 	std::cin >> first;
 	std::cout << "\nUnesite prezime: ";
@@ -28,15 +31,6 @@ Student::Student()
 
 	student.Write(&ID, "db/studentsdb.txt", &first, &last, &graduation);
 }
-
-/*
-	List all students in console
-*/
-void Student::Display()
-{
-
-}
-
 
 Student::~Student()
 {

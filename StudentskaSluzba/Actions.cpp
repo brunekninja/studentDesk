@@ -55,7 +55,7 @@ void Actions::Write(int* ID, std::string file_name, std::string* name, std::stri
 {
 	std::ofstream file;
 	// TODO if file dont exists create one and then append text
-	// open file for writing and append, set position at end of file
+	// open file for writing and append
 	file.open(file_name, std::ofstream::out | std::ofstream::app);
 
 	if (file.is_open())
