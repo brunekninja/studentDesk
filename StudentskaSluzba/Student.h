@@ -2,15 +2,15 @@
 #pragma once
 class Student
 {
-public:
-	std::string First;
-	std::string Last;
-	int Graduation;
-	Student();
-	int GetLastID();
-	void Display();
-	void Write(int* ID, std::string* First, std::string* Last, int* Graduation);
-private:
+protected:
 	int ID;
+
+public:
+	std::string first;
+	std::string last;
+	int graduation;
+	Student();
+	~Student();
+	void Display();
 };
 

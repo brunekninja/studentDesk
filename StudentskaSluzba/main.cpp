@@ -7,7 +7,9 @@
 //
 
 #include <iostream>
+#include "Actions.h"
 #include "Student.h"
+#include "Course.h"
 
 using namespace std;
 
@@ -52,6 +54,7 @@ int main() {
 				break;
 			case 2:
 				std::cout << "Odabran unos kolegija\n";
+				Course();
 				break;
 			case 3:
 				std::cout << "Odabran upis studenta na kolegij\n";
@@ -87,3 +90,4 @@ int main() {
 
 	return 0;
 }
+
