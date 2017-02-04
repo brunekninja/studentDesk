@@ -24,13 +24,10 @@
     <ClCompile Include="Course.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Actions.cpp">
+    <ClCompile Include="LinkCourseStudent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Registrar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LinkCourseStudent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,13 +38,10 @@
     <ClInclude Include="Course.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Actions.h">
+    <ClInclude Include="LinkCourseStudent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Registrar.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LinkCourseStudent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

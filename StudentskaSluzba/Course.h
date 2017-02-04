@@ -1,6 +1,10 @@
+#include "Registrar.h"
 #include <string>
+
+using namespace std;
+
 #pragma once
-class Course
+class Course : public Registrar
 {
 protected:
 	int ID;
@@ -8,11 +12,8 @@ protected:
 public:
 	Course();
 	~Course();
-	void Display();
-	void SetCourse();
-	void SetFilename(std::string n);
+	string name;
+	void AddCourse();
 	void Modify(char Name, int ID);
-	std::string name;
-	std::string file_name;
 };
 

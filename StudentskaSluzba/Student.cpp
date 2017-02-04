@@ -1,5 +1,4 @@
 #include "Student.h"
-#include "Actions.h"
 #include <iostream>
 #include <fstream>
 
@@ -16,20 +15,20 @@ Student::Student()
 	graduation = 0;
 }
 
-void Student::SetStudent() 
+void Student::SetStudent()
 {
-	std::cout << "Unesite ime studenta: ";
-	std::cin >> first;
-	std::cout << "\nUnesite prezime: ";
-	std::cin >> last;
-	std::cout << "\nUnesite Godinu zavrsetka studija: ";
-	std::cin >> graduation;
+	cout << "Unesite ime studenta: ";
+	cin >> first;
+	cout << "\nUnesite prezime: ";
+	cin >> last;
+	cout << "\nUnesite Godinu zavrsetka studija: ";
+	cin >> graduation;
 
-	Actions student;
+	Registrar student;
 
 	ID = student.GetLastID("db/studentsdb.txt");
 
-	student.Write(&ID, "db/studentsdb.txt", &first, &last, &graduation);
+	student.Add(&ID, "db/studentsdb.txt", &first, &last, &graduation);
 }
 
 Student::~Student()

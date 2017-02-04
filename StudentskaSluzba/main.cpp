@@ -7,7 +7,7 @@
 //
 
 #include <iostream>
-#include "Actions.h"
+#include "Registrar.h"
 #include "Student.h"
 #include "Course.h"
 #include "LinkCourseStudent.h"
@@ -26,7 +26,7 @@ int main() {
 	course.SetFilename("db/coursesdb.txt");
 
 	// main console printout
-	std::cout <<
+	cout <<
 		"UNESITE NAREDBU:\n"
 		"1 - Unos studenta;\n"
 		"2 - Unos kolegija;\n"
@@ -42,60 +42,60 @@ int main() {
 
 	do {
 		// get input from user
-		std::cin >> selection;
-		std::cin.clear();
-		std::cin.ignore();
+		cin >> selection;
+		cin.clear();
+		cin.ignore();
 		// check input is number 1 - 10
-		if (selection != 0 && selection < 0 || selection > 10 || std::cin.fail()) {
-			std::cout << "Unesen je krivi broj pokusajte ponovo\n";
-			std::cin.clear();
-			std::cin.ignore();
+		if (selection != 0 && selection < 0 || selection > 10 || cin.fail()) {
+			cout << "Unesen je krivi broj pokusajte ponovo\n";
+			cin.clear();
+			cin.ignore();
 			selection = true;
 		}
 		else {
 			// run selected action
 			switch (selection) {
 			case 0:
-				std::cout << "IZLAZ\n";
+				cout << "IZLAZ\n";
 				break;
 			case 1:
-				std::cout << "Odabran unos studenta\n";
+				cout << "Odabran unos studenta\n";
 				student.SetStudent();
 				break;
 			case 2:
-				std::cout << "Odabran unos kolegija\n";
-				course.SetCourse();
+				cout << "Odabran unos kolegija\n";
+				course.AddCourse();
 				break;
 			case 3:
-				std::cout << "Odabran upis studenta na kolegij\n";
+				cout << "Odabran upis studenta na kolegij\n";
 				enroll.Display();
 				break;
 			case 4:
-				std::cout << "Odabran ispis studenata\n";
+				cout << "Odabran ispis studenata\n";
 				student.Display();
 				break;
 			case 5:
-				std::cout << "Odabran ispis kolegija\n";
+				cout << "Odabran ispis kolegija\n";
 				course.Display();
 				break;
 			case 6:
-				std::cout << "Odabran ispis upisanih studenata\n";
+				cout << "Odabran ispis upisanih studenata\n";
 				break;
 			case 7:
-				std::cout << "Odabran unos ocjene\n";
+				cout << "Odabran unos ocjene\n";
 				break;
 			case 8:
-				std::cout << "Odabrana izmjena studenta\n";
+				cout << "Odabrana izmjena studenta\n";
 				break;
 			case 9:
-				std::cout << "Odabrana izmjena kolegija\n";
+				cout << "Odabrana izmjena kolegija\n";
 				break;
 			case 10:
-				std::cout << "Odabrana pomoc\n";
+				cout << "Odabrana pomoc\n";
 				break;
 
 			default:
-				std::cout << "default\n";
+				cout << "default\n";
 				break;
 			}
 		}

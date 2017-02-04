@@ -1,15 +1,17 @@
 #include <string>
-#include "Course.h"
+#include "Registrar.h"
+
+using namespace std;
 
 #pragma once
-class Student : public Course
+class Student : public Registrar
 {
 protected:
 	int ID;
 
 public:
-	std::string first;
-	std::string last;
+	string first;
+	string last;
 	int graduation;
 	void SetStudent();
 	Student();
