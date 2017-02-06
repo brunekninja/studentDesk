@@ -9,7 +9,7 @@ Student students;
 
 LinkCourseStudent::LinkCourseStudent()
 {
-	s = 0;
+	select = 0;
 }
 
 
@@ -17,9 +17,15 @@ LinkCourseStudent::~LinkCourseStudent()
 {
 }
 
-/*
-	get the array of user inputs
-*/
+//************************************
+// Get the array of user inputs
+//
+// Method:    Selection
+// FullName:  LinkCourseStudent::Selection
+// Access:    public 
+// Returns:   std::vector<int>
+// Qualifier:
+//************************************
 vector<int> LinkCourseStudent::Selection()
 {
 	char c = 0;
@@ -29,13 +35,21 @@ vector<int> LinkCourseStudent::Selection()
 
 	while (c != 'k') {
 		cin >> c;
-		arr.push_back(c);
+		if (c != 'k')
+			arr.push_back(c);
 	}
 
 	return arr;
 }
 
 
+//************************************
+// Method:    Display
+// FullName:  LinkCourseStudent::Display
+// Access:    public 
+// Returns:   void
+// Qualifier:
+//************************************
 void LinkCourseStudent::Display()
 {
 	cout << "\n\nOdaberite kolegij u kojeg zelite upisati studente\n";
@@ -47,7 +61,7 @@ void LinkCourseStudent::Display()
 	courses.Display();
 
 	// get input from user, selection of course
-	cin >> s;
+	cin >> select;
 
 	cout << "\n\nOdaberite brojem studente koje zelite upisati na kolegij,"
 		"pritisnite enter nakon unosa\n"
@@ -66,7 +80,8 @@ void LinkCourseStudent::Display()
 
 	if (c == 'y')
 	{
-		cout << "Upis je uspjesno obavljen";
+		this->Link(&select);
+		cout << "Upis je uspjesno obavljen\n";
 	}
 	else if(c == 'p')
 	{
@@ -75,7 +90,110 @@ void LinkCourseStudent::Display()
 
 }
 
-void LinkCourseStudent::Link()
+//************************************
+// Convert to string array of selections int-rs from user input
+//
+// Method:    ConvertToString
+// FullName:  LinkCourseStudent::ConvertToString
+// Access:    public 
+// Returns:   std::string
+// Qualifier:
+// Parameter: vector<int> * selection_array
+//************************************
+string LinkCourseStudent::ConvertToString(vector<int>* selection_array)
 {
+	string selection_string;
 
+	temp_array = *selection_array;
+
+	for (size_t i = 0; i < temp_array.size(); i++)
+	{
+		selection_string = temp_array[i];
+
+		if (i == temp_array.size() - 1)
+		{
+			temp.append(selection_string);
+		}
+		else 
+		{
+			temp.append(selection_string + ",");
+		}
+	}
+
+	selection_string = temp;
+
+	//TODO clean temp string...
+
+	return selection_string;
+}
+
+//************************************
+// Link selected course with students
+// stores all content from file in array, replaces string that is needed
+// clears the file and stores modified content form array in file
+//
+// Method:    Link
+// FullName:  LinkCourseStudent::Link
+// Access:    public 
+// Returns:   void
+// Qualifier:
+// Parameter: int * select
+//************************************
+void LinkCourseStudent::Link(int* select)
+{
+	string textline;
+	string token;
+	fstream file;
+	buffer;
+	int s = *select;
+
+	file.open("db/coursesdb.txt", ios::in);
+
+	if (file.is_open())
+	{
+		while (getline(file, textline))
+		{
+			size_t pos = textline.find(":");
+			if (pos != string::npos)
+			{
+				token = textline.substr(0, pos);
+
+				// only selected value, convert to string
+				if (token == to_string(s))
+				{
+					size_t p = textline.find("|");
+
+					textline.replace(p + 1, textline.length(), selection_string = ConvertToString(&selection_array));
+				}
+			}
+
+			buffer.push_back(textline);
+		}
+	}
+	else
+	{
+		cout << "Greska prilikom otvaranja dokumenta.\n";
+	}
+
+	file.close();
+
+
+	// now open that file with trunc and replace all content with stored strings arr in buffer
+	file.open("db/coursesdb.txt", ios::out | ios::trunc);
+
+	if (file.is_open())
+	{
+		// TODO create backup file in case of failure stream
+		for (size_t i = 0; i < buffer.size(); i++)
+		{
+			file << buffer[i];
+			file << '\n';
+		}
+	}
+	else
+	{
+		cout << "Greska prilikom otvaranja dokumenta.\n";
+	}
+
+	file.close();
 }

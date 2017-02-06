@@ -5,4 +5,3 @@
 5:Marko|Opetovanec|9009
 6:Ivan|Stepusin|9993
 7:Bruno|Markec|2011
-8:2,3,4,5|0|0

@@ -1,7 +1,7 @@
-1:OOP|1>5,2>4,3>3,4>2
-2:OOP|
-3:Programiranje|
-4:Split|
+1:OOP|1,2,3
+2:OOP2|
+3:Programiranje|1,2,5,4
+4:OS|
 5:TTOP|
 6:NEP|
-7:Neki|
+7:EP|

@@ -13,9 +13,16 @@ Registrar::~Registrar()
 {
 }
 
-/*
-	Get last ID from txt database file
-*/
+//************************************
+// Get last ID from txt database file
+//
+// Method:    GetLastID
+// FullName:  Registrar::GetLastID
+// Access:    public 
+// Returns:   int
+// Qualifier:
+// Parameter: string file_name
+//************************************
 int Registrar::GetLastID(string file_name)
 {
 	string textline;
@@ -47,12 +54,21 @@ int Registrar::GetLastID(string file_name)
 	return id;
 }
 
-
-/*
-	Write all inserted data from user to .txt database
-	works for both, setting courses and studnets, if some data is not sent to function ignores it
-	I have set all function values to default false
-*/
+//************************************
+// Write all inserted data from user to .txt database
+// works for both, setting courses and studnets, if some data is not sent to function ignores it
+// I set all function values to default false
+// Method:    Add
+// FullName:  Registrar::Add
+// Access:    public 
+// Returns:   void
+// Qualifier:
+// Parameter: int * ID
+// Parameter: string file_name
+// Parameter: string * name
+// Parameter: string * last
+// Parameter: int * graduation
+//************************************
 void Registrar::Add(int* ID, string file_name, string* name, string* last, int* graduation)
 {
 	ofstream file;
@@ -80,6 +96,8 @@ void Registrar::Add(int* ID, string file_name, string* name, string* last, int* 
 	{
 		cout << "Greska prilikom otvaranja dokumenta";
 	}
+
+	file.close();
 }
 
 void Registrar::SetFilename(string n)
@@ -87,6 +105,9 @@ void Registrar::SetFilename(string n)
 	file_name = n;
 }
 
+/*
+	Display all data from selected text file
+*/
 void Registrar::Display()
 {
 	string textline;
