@@ -15,7 +15,6 @@ void Course::AddCourse()
 	cout << "Unesite naziv kolegija: ";
 	cin >> name;
 
-
 	ID = course.GetLastID("db/coursesdb.txt");
 
 	course.Add(&ID, "db/coursesdb.txt", &name);

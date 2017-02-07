@@ -30,6 +30,9 @@
     <ClCompile Include="Registrar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Actions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Student.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Registrar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

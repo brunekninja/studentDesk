@@ -3,6 +3,8 @@
 #include <fstream>
 #include <string>
 
+//TODO create open file method, and stream selection
+
 Registrar::Registrar()
 {
 	file_name;
@@ -119,6 +121,58 @@ void Registrar::Display()
 		while (getline(file, textline))
 		{
 			cout << textline << endl;
+		}
+	}
+	else
+	{
+		cout << "Greska prilikom otvaranja dokumenta.\n";
+	}
+
+	file.close();
+}
+
+void Registrar::Remove()
+{
+	string token;
+	string c;
+
+	cout << "Odaberite ID, brisanje odabranih ID-a";
+
+	for (size_t a = 0; a < usr_selection.size(); a++)
+	{
+		c = usr_selection[a];
+
+		for (size_t i = 0; i < buffer.size(); i++)
+		{
+			size_t pos = buffer[i].find(":");
+			if (pos != string::npos)
+			{
+				token = buffer[i].substr(0, pos);
+
+				// only selected value, convert to string
+				if (token == c)
+				{
+					buffer[i].replace(0, buffer[i].length(), "");
+					//TODO if buffer empty skip that line, on file write
+				}
+			}
+		}
+	}
+}
+
+void Registrar::FileBuffer()
+{
+	string textline;
+	fstream file;
+	buffer;
+
+	file.open(file_name, ios::in);
+
+	if (file.is_open())
+	{
+		while (getline(file, textline))
+		{
+			buffer.push_back(textline);
 		}
 	}
 	else

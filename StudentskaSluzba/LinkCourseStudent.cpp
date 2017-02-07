@@ -6,6 +6,7 @@
 
 Course courses;
 Student students;
+Registrar registrar;
 
 LinkCourseStudent::LinkCourseStudent()
 {
@@ -15,31 +16,6 @@ LinkCourseStudent::LinkCourseStudent()
 
 LinkCourseStudent::~LinkCourseStudent()
 {
-}
-
-//************************************
-// Get the array of user inputs
-//
-// Method:    Selection
-// FullName:  LinkCourseStudent::Selection
-// Access:    public 
-// Returns:   std::vector<int>
-// Qualifier:
-//************************************
-vector<int> LinkCourseStudent::Selection()
-{
-	char c = 0;
-	vector<int> arr;
-	// always clear array, esspecialy if you need to repeat again
-	arr.clear();
-
-	while (c != 'k') {
-		cin >> c;
-		if (c != 'k')
-			arr.push_back(c);
-	}
-
-	return arr;
 }
 
 
@@ -72,7 +48,7 @@ void LinkCourseStudent::Display()
 
 	char c = 0;
 
-	selection_array = Selection();
+	//selection_array = Selection();
 
 	cout << "Za potvrdu unosa pritisnite 'y' za ponavljanje 'p' za ponistavanje 'n' \n\n";
 
@@ -85,7 +61,7 @@ void LinkCourseStudent::Display()
 	}
 	else if(c == 'p')
 	{
-		selection_array = Selection();
+		//selection_array = Selection();
 	}
 
 }
@@ -141,52 +117,39 @@ string LinkCourseStudent::ConvertToString(vector<int>* selection_array)
 //************************************
 void LinkCourseStudent::Link(int* select)
 {
-	string textline;
 	string token;
 	fstream file;
-	buffer;
 	int s = *select;
 
-	file.open("db/coursesdb.txt", ios::in);
+	registrar.SetFilename("db/coursesdb.txt");
+	registrar.FileBuffer();
 
-	if (file.is_open())
-	{
-		while (getline(file, textline))
+	for (size_t i = 0; i < registrar.buffer.size(); i++)
+	{	
+		size_t pos = registrar.buffer[i].find(":");
+		if (pos != string::npos)
 		{
-			size_t pos = textline.find(":");
-			if (pos != string::npos)
+			token = registrar.buffer[i].substr(0, pos);
+
+			// only selected value, convert to string
+			if (token == to_string(s))
 			{
-				token = textline.substr(0, pos);
+				size_t p = registrar.buffer[i].find("|");
 
-				// only selected value, convert to string
-				if (token == to_string(s))
-				{
-					size_t p = textline.find("|");
-
-					textline.replace(p + 1, textline.length(), selection_string = ConvertToString(&selection_array));
-				}
+				registrar.buffer[i].replace(p + 1, registrar.buffer[i].length(), selection_string = ConvertToString(&selection_array));
 			}
-
-			buffer.push_back(textline);
 		}
 	}
-	else
-	{
-		cout << "Greska prilikom otvaranja dokumenta.\n";
-	}
-
-	file.close();
-
 
 	// now open that file with trunc and replace all content with stored strings arr in buffer
-	file.open("db/coursesdb.txt", ios::out | ios::trunc);
+	file.open(registrar.file_name, ios::out | ios::trunc);
 
 	if (file.is_open())
 	{
 		// TODO create backup file in case of failure stream
-		for (size_t i = 0; i < buffer.size(); i++)
+		for (size_t i = 0; i < registrar.buffer.size(); i++)
 		{
-			file << buffer[i];
+			file << registrar.buffer[i];
 			file << '\n';
 		}
 	}

@@ -73,10 +73,14 @@ int main() {
 			case 4:
 				cout << "Odabran ispis studenata\n";
 				student.Display();
+				student.FileBuffer();
+				student.SetSelection();
+				student.Remove();
 				break;
 			case 5:
 				cout << "Odabran ispis kolegija\n";
 				course.Display();
+				course.Remove();
 				break;
 			case 6:
 				cout << "Odabran ispis upisanih studenata\n";
