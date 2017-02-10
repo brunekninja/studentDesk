@@ -11,6 +11,11 @@ public:
 	~Actions();
 	vector<char> usr_selection;
 	vector<char> Selection();
+	bool check = false;
+	int id_select;
 	void SetSelection();
+	void SetCheck();
+	void SetIDselect();
+	bool CheckSelection();
 };
 

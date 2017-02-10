@@ -68,19 +68,43 @@ int main() {
 				break;
 			case 3:
 				cout << "Odabran upis studenta na kolegij\n";
-				enroll.Display();
+				course.Display();
+				cout << "\n\nOdaberite kolegij u kojeg zelite upisati studente\n";
+
+				enroll.SetIDselect();
+
+				cout << "\n\nOdaberite brojem studente koje zelite upisati na kolegij\n";
+
+				student.Display();
+				enroll.SetSelection();
+				enroll.SetCheck();
+
+				if (enroll.check)
+					enroll.Link();					
 				break;
 			case 4:
 				cout << "Odabran ispis studenata\n";
 				student.Display();
 				student.FileBuffer();
+				cout << "Odaberite ID, brisanje odabranih ID-a/n";
 				student.SetSelection();
-				student.Remove();
+
+				student.SetCheck();
+
+				if (student.check)
+					student.Remove();
 				break;
 			case 5:
 				cout << "Odabran ispis kolegija\n";
 				course.Display();
-				course.Remove();
+				course.FileBuffer();
+				cout << "Odaberite ID, brisanje odabranih ID-a/n";
+				course.SetSelection();
+
+				course.SetCheck();
+
+				if (course.check)
+					course.Remove();
 				break;
 			case 6:
 				cout << "Odabran ispis upisanih studenata\n";

@@ -20,53 +20,6 @@ LinkCourseStudent::~LinkCourseStudent()
 
 
 //************************************
-// Method:    Display
-// FullName:  LinkCourseStudent::Display
-// Access:    public 
-// Returns:   void
-// Qualifier:
-//************************************
-void LinkCourseStudent::Display()
-{
-	cout << "\n\nOdaberite kolegij u kojeg zelite upisati studente\n";
-
-	students.SetFilename("db/studentsdb.txt");
-	courses.SetFilename("db/coursesdb.txt");
-
-	// display all courses in console
-	courses.Display();
-
-	// get input from user, selection of course
-	cin >> select;
-
-	cout << "\n\nOdaberite brojem studente koje zelite upisati na kolegij,"
-		"pritisnite enter nakon unosa\n"
-		"Za kraj napisite 'k'\n\n";
-	
-	// display all studnets in console
-	students.Display();
-
-	char c = 0;
-
-	//selection_array = Selection();
-
-	cout << "Za potvrdu unosa pritisnite 'y' za ponavljanje 'p' za ponistavanje 'n' \n\n";
-
-	cin >> c;
-
-	if (c == 'y')
-	{
-		this->Link(&select);
-		cout << "Upis je uspjesno obavljen\n";
-	}
-	else if(c == 'p')
-	{
-		//selection_array = Selection();
-	}
-
-}
-
-//************************************
 // Convert to string array of selections int-rs from user input
 //
 // Method:    ConvertToString
@@ -76,11 +29,11 @@ void LinkCourseStudent::Display()
 // Qualifier:
 // Parameter: vector<int> * selection_array
 //************************************
-string LinkCourseStudent::ConvertToString(vector<int>* selection_array)
+string LinkCourseStudent::ConvertToString(vector<char> selection_array)
 {
 	string selection_string;
 
-	temp_array = *selection_array;
+	temp_array = selection_array;
 
 	for (size_t i = 0; i < temp_array.size(); i++)
 	{
@@ -103,6 +56,16 @@ string LinkCourseStudent::ConvertToString(vector<int>* selection_array)
 	return selection_string;
 }
 
+void LinkCourseStudent::SetModify()
+{
+	modify = true;
+}
+
+void LinkCourseStudent::SetGrade()
+{
+	grade = true;
+}
+
 //************************************
 // Link selected course with students
 // stores all content from file in array, replaces string that is needed
@@ -115,11 +78,10 @@ string LinkCourseStudent::ConvertToString(vector<int>* selection_array)
 // Qualifier:
 // Parameter: int * select
 //************************************
-void LinkCourseStudent::Link(int* select)
+void LinkCourseStudent::Link()
 {
 	string token;
 	fstream file;
-	int s = *select;
 
 	registrar.SetFilename("db/coursesdb.txt");
 	registrar.FileBuffer();
@@ -132,11 +94,11 @@ void LinkCourseStudent::Link(int* select)
 			token = registrar.buffer[i].substr(0, pos);
 
 			// only selected value, convert to string
-			if (token == to_string(s))
+			if (token == to_string(id_select))
 			{
 				size_t p = registrar.buffer[i].find("|");
 
-				registrar.buffer[i].replace(p + 1, registrar.buffer[i].length(), selection_string = ConvertToString(&selection_array));
+				registrar.buffer[i].replace(p + 1, registrar.buffer[i].length(), selection_string = ConvertToString(usr_selection));
 			}
 		}
 	}

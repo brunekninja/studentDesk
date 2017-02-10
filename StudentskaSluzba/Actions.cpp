@@ -36,7 +36,31 @@ vector<char> Actions::Selection()
 	return arr;
 }
 
+bool Actions::CheckSelection()
+{
+	char c;
+
+	cout << "Za potvrdu unosa pritisnite 'y', za ponistavanje 'n' \n\n";
+
+	cin >> c;
+
+	if (c == 'y') 
+		check = true;
+
+	return check;
+}
+
 void Actions::SetSelection()
 {
 	usr_selection = Selection();
+}
+
+void Actions::SetCheck()
+{
+	check = CheckSelection();
+}
+
+void Actions::SetIDselect()
+{
+	cin >> id_select;
 }

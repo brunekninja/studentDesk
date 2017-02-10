@@ -107,6 +107,11 @@ void Registrar::SetFilename(string n)
 	file_name = n;
 }
 
+void Registrar::DisplayAttendees()
+{
+	// Display atendees based on selected course
+}
+
 /*
 	Display all data from selected text file
 */
@@ -135,8 +140,7 @@ void Registrar::Remove()
 {
 	string token;
 	string c;
-
-	cout << "Odaberite ID, brisanje odabranih ID-a";
+	fstream file;
 
 	for (size_t a = 0; a < usr_selection.size(); a++)
 	{
@@ -158,6 +162,29 @@ void Registrar::Remove()
 			}
 		}
 	}
+
+	file.open(file_name, ios::out | ios::trunc);
+
+	if (file.is_open())
+	{
+		// TODO create backup file in case of failure stream
+		for (size_t i = 0; i < buffer.size(); i++)
+		{
+			if (buffer[i] != "") 
+			{
+				file << buffer[i];
+				file << '\n';
+			}
+		}
+		cout << "Uspjesno obrisano/n";
+	}
+	else
+	{
+		cout << "Greska prilikom otvaranja dokumenta.\n";
+	}
+
+	file.close();
+
 }
 
 void Registrar::FileBuffer()

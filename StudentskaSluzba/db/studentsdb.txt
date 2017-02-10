@@ -1,7 +1,4 @@
-1:Bruno|Drzanic|1992
-2:Marko|Mak|3231
-3:Stjepan|Stipic|2011
-4:Marko|Markec|2011
 5:Marko|Opetovanec|9009
 6:Ivan|Stepusin|9993
 7:Bruno|Markec|2011
+8:0|0|0
