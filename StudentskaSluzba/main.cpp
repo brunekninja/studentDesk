@@ -48,7 +48,7 @@ int main() {
 		cin.clear();
 		cin.ignore();
 		// check input is number 1 - 10
-		if (selection != 0 && selection < 0 || selection > 10 || cin.fail()) {
+		if (selection != 0 && selection < 0 || selection > 12 || cin.fail()) {
 			cout << "Unesen je krivi broj pokusajte ponovo\n";
 			cin.clear();
 			cin.ignore();
