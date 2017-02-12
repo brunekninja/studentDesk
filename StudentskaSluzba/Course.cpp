@@ -69,12 +69,75 @@ void Course::ModifyEnrollment(int ID, char type)
 				}
 				else if ('g' == type)
 				{
+					int grade;
+					
+					for (size_t x = 0; x < temp_array.size(); x++)
+					{
+						cout << "Unesite ocjenu za studenta pod rednim brojem  ";
+						cout << temp_array[x];
+						cout << "\n";
 
+						cin >> grade;
+						//TODO finish storing grades
+					}
+					buffer[i].replace(p + 1, buffer[i].length(), selection_string = ConvertToString(temp_array));
 				}
 				else
 				{
 					break;
 				}
+			}
+		}
+	}
+
+	// now open that file with trunc and replace all content with stored strings arr in buffer
+	file.open(file_name, ios::out | ios::trunc);
+
+	if (file.is_open())
+	{
+		// TODO create backup file in case of failure stream
+		for (size_t i = 0; i < buffer.size(); i++)
+		{
+			file << buffer[i];
+			file << '\n';
+		}
+	}
+	else
+	{
+		cout << "Greska prilikom otvaranja dokumenta.\n";
+	}
+
+	file.close();
+}
+
+void Course::Modify()
+{
+	string token;
+	string rest;
+	string temp;
+	fstream file;
+
+	for (size_t i = 0; i < buffer.size(); i++)
+	{
+		size_t pos = buffer[i].find(":");
+
+		if (pos != string::npos)
+		{
+			token = buffer[i].substr(0, pos);
+
+			// only selected value, convert to string
+			if (token == to_string(id_select))
+			{
+				size_t p = buffer[i].find("|");
+
+				rest = buffer[i].substr(p, buffer[i].size());
+
+				cout << "Unesite naziv kolegija: ";
+				cin >> name;
+
+				temp += name + rest;
+
+				buffer[i].replace(pos + 1, buffer[i].length(), temp);
 			}
 		}
 	}

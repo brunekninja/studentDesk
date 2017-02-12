@@ -15,5 +15,6 @@ public:
 	string name;
 	void AddCourse();
 	void ModifyEnrollment(int ID, char type);
+	void Modify();
 };
 

@@ -14,6 +14,7 @@ public:
 	string last;
 	int graduation;
 	void SetStudent();
+	void Modify();
 	Student();
 	~Student();
 };

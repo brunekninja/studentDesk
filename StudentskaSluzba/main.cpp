@@ -129,12 +129,46 @@ int main() {
 				break;
 			case 7:
 				cout << "Odabran unos ocjene\n";
+				cout << "Odaberite kolegij u kojeg zelite unjeti ocjene\n";
+
+				course.Display();
+
+				course.SetIDselect();
+
+				course.SetCheck();
+
+				if (course.check)
+					course.GetAttendees();
+
+					course.DisplayAttendees();
+
+					course.ModifyEnrollment(course.id_select, 'g');
 				break;
 			case 8:
 				cout << "Odabrana izmjena studenta\n";
+				cout << "Odaberite studenta kojeg zelite izmjeniti\n";
+
+				student.Display();
+
+				student.SetIDselect();
+				student.FileBuffer();
+				student.SetCheck();
+
+				if (student.check)
+					student.Modify();
 				break;
 			case 9:
 				cout << "Odabrana izmjena kolegija\n";
+				cout << "Odaberite kolegij kojeg zelite izmjeniti\n";
+
+				course.Display();
+
+				course.SetIDselect();
+				course.FileBuffer();
+				course.SetCheck();
+
+				if (course.check)
+					course.Modify();
 				break;
 			case 10:
 				cout << "Odabran prikaz kolegija\n";
