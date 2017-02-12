@@ -37,7 +37,9 @@ int main() {
 		"7 - Unesi ocjenu;\n"
 		"8 - Izmjeni studenta;\n"
 		"9 - Izmjeni kolegij;\n"
-		"10 - Pomoc;\n"
+		"10 - Prikaz kolegija;\n"
+		"11 - Prikaz studenata;\n"
+		"12 - Pomoc;\n"
 		"0 - Izlaz;\n";
 
 	do {
@@ -180,6 +182,7 @@ int main() {
 				break;
 			case 12:
 				cout << "Odabrana pomoc\n";
+				cout << "Za pomoc javite se na mail adresu bruno.drzanic@gmail.com, Hvala\n";
 				break;
 
 			default:
