@@ -108,6 +108,24 @@ int main() {
 				break;
 			case 6:
 				cout << "Odabran ispis upisanih studenata\n";
+				cout << "Odaberite kolegij iz kojeg zelite ispisati studente\n";
+
+				course.Display();
+
+				course.SetIDselect();
+				course.GetAttendees();
+
+				course.DisplayAttendees();
+
+				cout << "\nOdaberite studente koje zelite ispisati sa kolegija\n";
+
+				course.SetSelection();
+
+				course.SetCheck();
+
+				if (course.check)
+					course.Modify(course.id_select, 'r');
+				
 				break;
 			case 7:
 				cout << "Odabran unos ocjene\n";

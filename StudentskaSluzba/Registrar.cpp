@@ -107,9 +107,75 @@ void Registrar::SetFilename(string n)
 	file_name = n;
 }
 
+void Registrar::GetAttendees()
+{
+	string token;
+	string line;
+	string attendee;
+
+	// Display atendees based on selected course
+	SetFilename("db/coursesdb.txt");
+	FileBuffer();
+	attendee = "";
+
+	//clean attendees vector
+	attendees.clear();
+
+	for (size_t i = 0; i < buffer.size(); i++)
+	{
+		size_t pos = buffer[i].find(":");
+		if (pos != string::npos)
+		{
+			token = buffer[i].substr(0, pos);
+
+			// only selected value, convert to string
+			if (token == to_string(id_select))
+			{
+				size_t p = buffer[i].find("|");
+				token = buffer[i].substr(p + 1, buffer[i].size());
+
+				for (size_t x = 0; x < token.size(); x++)
+				{
+					if (token[x] != ',')
+					{
+						attendee += token[x];
+					}
+
+					if (token[x] == ',' || x == token.size() - 1)
+					{
+						attendees.push_back(attendee);
+						attendee = "";
+					}
+				}
+			}
+		}
+	}
+}
+
 void Registrar::DisplayAttendees()
 {
-	// Display atendees based on selected course
+	string token;
+
+	SetFilename("db/studentsdb.txt");
+	FileBuffer();
+
+	for (size_t i = 0; i < buffer.size(); i++)
+	{
+		size_t pos = buffer[i].find(":");
+		if (pos != string::npos)
+		{
+			token = buffer[i].substr(0, pos);
+
+			for (size_t x = 0; x < attendees.size(); x++)
+			{
+				if (attendees[x] == token)
+				{
+					cout << buffer[i];
+					cout << "\n";
+				}
+			}
+		}
+	}
 }
 
 /*
@@ -192,6 +258,8 @@ void Registrar::FileBuffer()
 	string textline;
 	fstream file;
 	buffer;
+
+	buffer.clear();
 
 	file.open(file_name, ios::in);
 

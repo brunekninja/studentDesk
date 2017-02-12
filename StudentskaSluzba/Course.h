@@ -8,12 +8,12 @@ class Course : public Registrar
 {
 protected:
 	int ID;
-
+	char type;
 public:
 	Course();
 	~Course();
 	string name;
 	void AddCourse();
-	void Modify(char Name, int ID);
+	void Modify(int ID, char type);
 };
 
