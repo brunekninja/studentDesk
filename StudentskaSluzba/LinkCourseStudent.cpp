@@ -18,44 +18,6 @@ LinkCourseStudent::~LinkCourseStudent()
 {
 }
 
-
-//************************************
-// Convert to string array of selections int-rs from user input
-//
-// Method:    ConvertToString
-// FullName:  LinkCourseStudent::ConvertToString
-// Access:    public 
-// Returns:   std::string
-// Qualifier:
-// Parameter: vector<int> * selection_array
-//************************************
-string LinkCourseStudent::ConvertToString(vector<char> selection_array)
-{
-	string selection_string;
-
-	temp_array = selection_array;
-
-	for (size_t i = 0; i < temp_array.size(); i++)
-	{
-		selection_string = temp_array[i];
-
-		if (i == temp_array.size() - 1)
-		{
-			temp.append(selection_string);
-		}
-		else 
-		{
-			temp.append(selection_string + ",");
-		}
-	}
-
-	selection_string = temp;
-
-	//TODO clean temp string...
-
-	return selection_string;
-}
-
 void LinkCourseStudent::SetModify()
 {
 	modify = true;

@@ -14,6 +14,6 @@ public:
 	~Course();
 	string name;
 	void AddCourse();
-	void Modify(int ID, char type);
+	void ModifyEnrollment(int ID, char type);
 };
 

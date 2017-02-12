@@ -205,7 +205,7 @@ void Registrar::Display()
 void Registrar::Remove()
 {
 	string token;
-	string c;
+	int c;
 	fstream file;
 
 	for (size_t a = 0; a < usr_selection.size(); a++)
@@ -220,7 +220,7 @@ void Registrar::Remove()
 				token = buffer[i].substr(0, pos);
 
 				// only selected value, convert to string
-				if (token == c)
+				if (token == to_string(c))
 				{
 					buffer[i].replace(0, buffer[i].length(), "");
 					//TODO if buffer empty skip that line, on file write
@@ -242,7 +242,7 @@ void Registrar::Remove()
 				file << '\n';
 			}
 		}
-		cout << "Uspjesno obrisano/n";
+		cout << "Uspjesno obrisano\n";
 	}
 	else
 	{

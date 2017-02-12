@@ -1,6 +1,7 @@
 #include "Course.h"
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 Registrar course;
 
@@ -20,9 +21,10 @@ void Course::AddCourse()
 	course.Add(&ID, "db/coursesdb.txt", &name);
 }
 
-void Course::Modify(int ID, char type)
+void Course::ModifyEnrollment(int ID, char type)
 {
 	string token;
+	string temp;
 	fstream file;
 
 	SetFilename("db/coursesdb.txt");
@@ -39,8 +41,40 @@ void Course::Modify(int ID, char type)
 			if (token == to_string(ID))
 			{
 				size_t p = buffer[i].find("|");
+				token = buffer[i].substr(p + 1, buffer[i].size());
 
-				//buffer[i].replace(p + 1, buffer[i].length(), selection_string = ConvertToString(usr_selection));
+				for (size_t x = 0; x < token.size(); x++)
+				{
+					if (token[x] != ',')
+					{
+						temp += token[x];
+					}
+
+					if (token[x] == ',' || x == token.size() - 1)
+					{
+						temp_array.push_back(stoi(temp));
+						temp = "";
+					}
+				}
+
+				// 'r' for remove
+				if ('r' == type)
+				{
+					for (size_t x = 0; x < usr_selection.size(); x++)
+					{
+						temp_array.erase(remove(temp_array.begin(), temp_array.end(), usr_selection[x]), temp_array.end());
+					}
+
+					buffer[i].replace(p + 1, buffer[i].length(), selection_string = ConvertToString(temp_array));
+				}
+				else if ('g' == type)
+				{
+
+				}
+				else
+				{
+					break;
+				}
 			}
 		}
 	}

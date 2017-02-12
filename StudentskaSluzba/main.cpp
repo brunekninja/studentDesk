@@ -83,7 +83,7 @@ int main() {
 					enroll.Link();					
 				break;
 			case 4:
-				cout << "Odabran ispis studenata\n";
+				cout << "Odabrano brisanje studenata\n";
 				student.Display();
 				student.FileBuffer();
 				cout << "Odaberite ID, brisanje odabranih ID-a/n";
@@ -95,7 +95,7 @@ int main() {
 					student.Remove();
 				break;
 			case 5:
-				cout << "Odabran ispis kolegija\n";
+				cout << "Odabrano brisanje kolegija\n";
 				course.Display();
 				course.FileBuffer();
 				cout << "Odaberite ID, brisanje odabranih ID-a/n";
@@ -124,7 +124,7 @@ int main() {
 				course.SetCheck();
 
 				if (course.check)
-					course.Modify(course.id_select, 'r');
+					course.ModifyEnrollment(course.id_select, 'r');
 				
 				break;
 			case 7:
@@ -137,6 +137,14 @@ int main() {
 				cout << "Odabrana izmjena kolegija\n";
 				break;
 			case 10:
+				cout << "Odabran prikaz kolegija\n";
+				course.Display();
+				break;
+			case 11:
+				cout << "Odabran prikaz studenata\n";
+				student.Display();
+				break;
+			case 12:
 				cout << "Odabrana pomoc\n";
 				break;
 
